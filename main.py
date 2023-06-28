@@ -4,28 +4,7 @@ class Solution:
         # Merge the two linked lists into a single linked list
         curr = dummy = Node(None)
         seen = set()
-        while head1 and head2:
-            if head1.data < head2.data:
-                if head1.data not in seen:
-                    curr.next = Node(head1.data)
-                    seen.add(head1.data)
-                    curr = curr.next
-                head1 = head1.next
-            elif head1.data > head2.data:
-                if head2.data not in seen:
-                    curr.next = Node(head2.data)
-                    seen.add(head2.data)
-                    curr = curr.next
-                head2 = head2.next
-            else:
-                if head1.data not in seen:
-                    curr.next = Node(head1.data)
-                    seen.add(head1.data)
-                    curr = curr.next
-                head1 = head1.next
-                head2 = head2.next
-        
-        # Add any remaining nodes from the first linked list
+        # Add nodes from the first linked list
         while head1:
             if head1.data not in seen:
                 curr.next = Node(head1.data)
@@ -33,7 +12,7 @@ class Solution:
                 curr = curr.next
             head1 = head1.next
         
-        # Add any remaining nodes from the second linked list
+        # Add nodes from the second linked list
         while head2:
             if head2.data not in seen:
                 curr.next = Node(head2.data)
