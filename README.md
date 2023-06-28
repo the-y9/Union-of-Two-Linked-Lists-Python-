@@ -1,28 +1,21 @@
 # Union of Two Linked Lists Python
-- The union() function takes two linked lists, head1 and head2, as input and returns the head of the resulting union list.
 
-- Inside the union() function, we define a dummy node (dummy) and a current node (curr) to keep track of the current position in the resulting union list. We also define a set (seen) to keep track of the distinct elements we have encountered so far.
+The provided code demonstrates a solution to merge and sort two linked lists. It consists of several classes and functions that work together to achieve the desired outcome.
 
-- We iterate over the two input linked lists, head1 and head2, simultaneously until we reach the end of either list.
+The Solution class contains a single method called union. This method takes two linked lists, head1 and head2, as input and returns a new linked list that contains all the unique elements from both input lists, sorted in ascending order.
 
-- For each iteration, we compare the values at the current positions of head1 and head2. If the value in head1 is less than the value in head2, we check if the value is already in the set seen. If it is not in the set, we add it to the union list by creating a new node with the value and updating the curr pointer. We also add the value to the seen set. Finally, we move the head1 pointer to the next node in the first list.
+The union method first creates a dummy node and sets the current and seen variables to keep track of the merged list and the values encountered so far, respectively. It then iterates through the nodes of the first linked list (head1) and checks if each node's data is not present in the seen set. If the data is unique, a new node is created and added to the merged list. The value is also added to the seen set. The process is repeated for the second linked list (head2).
 
-- Similarly, if the value in head2 is less than the value in head1, we perform the same steps as above, but with the head2 pointer and the second list.
+After merging the two lists, the union method calls the sortList method to sort the merged list. The sortList method uses the merge sort algorithm to recursively split the list into two halves, sort each half separately, and then merge the sorted halves using the merge method.
 
-- If the values in both head1 and head2 are equal, we follow the same steps as above, but we also move both head1 and head2 pointers to the next nodes in their respective lists.
+The findMiddle method is a helper function used by sortList to find the middle node of a linked list. It uses the slow and fast pointer approach, where the slow pointer moves one step at a time and the fast pointer moves two steps at a time. When the fast pointer reaches the end of the list, the slow pointer points to the middle node.
 
-- After reaching the end of either list, we add the remaining elements from the other list to the union list. We check if each value is already in the seen set before adding it to avoid duplicates.
+The merge method is another helper function used by sortList to merge two sorted linked lists into a single sorted list. It compares the data values of the nodes in the two lists and adds them to the new merged list in ascending order. The method also ensures that any remaining nodes from either list are properly connected to the merged list.
 
-- Now, we have the union list with all the distinct elements, but it may not be sorted in ascending order. To sort the list, we call the sortList() function, passing the dummy.next node (the first node in the union list) as the head.
+The Node class represents a single node in the linked list. Each node contains a data attribute to store the value and a next attribute to point to the next node in the list.
 
-- The sortList() function implements the merge sort algorithm to sort the linked list. It recursively splits the list into two halves, sorts each half separately using recursive calls, and then merges the sorted halves.
+The LinkedList class is responsible for managing the linked list. It has a head attribute that points to the first node in the list and a tail attribute that points to the last node. The class provides an insert method to add new nodes to the end of the list.
 
-- The findMiddle() function is used to find the middle node of the list by using the slow and fast pointer technique.
+In the main part of the code, two input arrays (arr1 and arr2) are provided, and the elements from these arrays are inserted into separate linked lists (ll1 and ll2) using the LinkedList class. An instance of the Solution class (ob) is created, and the union method is called with the heads of the two linked lists as arguments. Finally, the resulting merged and sorted linked list is printed using the printList function.
 
-- The merge() function merges two sorted linked lists into a single sorted linked list. It compares the values of the nodes from both lists and adds them to the result list in ascending order.
-
-- Finally, the sortList() function returns the head of the sorted union list.
-
-- The union() function returns the head of the sorted union list as the final output.
-
-It merges the two linked lists into a single linked list, keeps track of distinct elements using a set, and then sorts the resulting list in ascending order using the merge sort algorithm.
+In summary, the code takes two linked lists, merges them into a single list while removing duplicates, sorts the merged list using merge sort, and returns the sorted list as the union of the two input lists..
